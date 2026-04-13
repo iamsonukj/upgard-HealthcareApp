@@ -1,0 +1,43 @@
+﻿@model HealthcareApp.BLL.DTOs.DoctorDto
+
+<h2>Add Doctor</h2>
+
+<form asp-action="Create" method="post">
+
+    <div class="mb-2">
+        <label>Name</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-2">
+        <label>Specialization</label>
+        <select asp-for="Specialization" class="form-control">
+            <option value="">Select</option>
+            <option>Cardiologist</option>
+            <option>Neurologist</option>
+            <option>Dermatologist</option>
+            <option>Orthopedic</option>
+        </select>
+        <span asp-validation-for="Specialization" class="text-danger"></span>
+    </div>
+
+    <div class="mb-2">
+        <label>Time Slot</label>
+        <select asp-for="AvailableTimeSlot" class="form-control">
+            <option value="">Select</option>
+            <option>9AM - 11AM</option>
+            <option>11AM - 1PM</option>
+            <option>2PM - 4PM</option>
+            <option>4PM - 6PM</option>
+        </select>
+        <span asp-validation-for="AvailableTimeSlot" class="text-danger"></span>
+    </div>
+
+    <button class="btn btn-success">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

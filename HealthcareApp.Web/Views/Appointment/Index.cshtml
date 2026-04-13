@@ -1,0 +1,71 @@
+﻿@model IEnumerable<HealthcareApp.BLL.DTOs.AppointmentDto>
+
+<h2>Appointments</h2>
+
+<a class="btn btn-success mb-2" asp-action="Create">Book</a>
+
+<form method="get" asp-action="Index" class="mb-3">
+    <div class="d-flex gap-2">
+
+        <!-- DATE FILTER -->
+        <input type="date"
+               name="date"
+               value="@ViewBag.SelectedDate"
+               class="form-control" />
+
+        <!-- STATUS FILTER -->
+        <select name="status" class="form-control">
+            <option value="">All Status</option>
+            <option value="Booked" selected="@(ViewBag.SelectedStatus == "Booked")">Booked</option>
+            <option value="Cancelled" selected="@(ViewBag.SelectedStatus == "Cancelled")">Cancelled</option>
+            <option value="Completed" selected="@(ViewBag.SelectedStatus == "Completed")">Completed</option>
+        </select>
+
+        <!-- SEARCH BUTTON -->
+        <button type="submit" class="btn btn-primary">
+            Filter
+        </button>
+
+        <!-- RESET -->
+        <a asp-action="Index" class="btn btn-secondary">
+            Reset
+        </a>
+
+    </div>
+</form>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Patient</th>
+            <th>Doctor</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var a in Model)
+        {
+            <tr>
+                <td>@a.PatientName</td>
+                <td>@a.DoctorName</td>
+                <td>@a.Date.ToShortDateString()</td>
+                <td>@a.TimeSlot</td>
+                <td>@a.Status</td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@a.AppointmentId"
+                       class="btn btn-warning btn-sm">Edit</a>
+
+                    <form asp-action="Delete" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@a.AppointmentId" />
+                        <button class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

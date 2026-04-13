@@ -1,0 +1,36 @@
+﻿@model HealthcareApp.BLL.DTOs.DoctorDto
+
+<h2>Edit Doctor</h2>
+
+<form asp-action="Edit" method="post">
+
+    <input type="hidden" asp-for="DoctorId" />
+
+    <div class="mb-2">
+        <label>Name</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-2">
+        <label>Specialization</label>
+        <select asp-for="Specialization" class="form-control">
+            <option>Cardiologist</option>
+            <option>Neurologist</option>
+            <option>Dermatologist</option>
+            <option>Orthopedic</option>
+        </select>
+    </div>
+
+    <div class="mb-2">
+        <label>Time Slot</label>
+        <select asp-for="AvailableTimeSlot" class="form-control">
+            <option>9AM - 11AM</option>
+            <option>11AM - 1PM</option>
+            <option>2PM - 4PM</option>
+        </select>
+    </div>
+
+    <button class="btn btn-warning">Update</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

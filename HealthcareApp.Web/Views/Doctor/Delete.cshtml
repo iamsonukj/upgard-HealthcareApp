@@ -1,0 +1,12 @@
+﻿@model HealthcareApp.BLL.DTOs.DoctorDto
+
+<h3>Delete Doctor</h3>
+
+<p>Are you sure you want to delete <b>@Model.Name</b>?</p>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="DoctorId" />
+
+    <button class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

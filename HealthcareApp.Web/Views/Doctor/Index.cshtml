@@ -1,0 +1,41 @@
+﻿@model IEnumerable<HealthcareApp.BLL.DTOs.DoctorDto>
+
+<h2>Doctors</h2>
+
+<a class="btn btn-success mb-2" asp-action="Create">Add Doctor</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Specialization</th>
+            <th>Time Slot</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var d in Model)
+        {
+            <tr>
+                <td>@d.Name</td>
+                <td>@d.Specialization</td>
+                <td>@d.AvailableTimeSlot</td>
+
+                <td>
+                    <a class="btn btn-warning btn-sm"
+                       asp-action="Edit"
+                       asp-route-id="@d.DoctorId">Edit</a>
+
+                    <form asp-action="DeleteConfirmed" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@d.DoctorId" />
+                        <button class="btn btn-danger btn-sm"
+                                onclick="return confirm('Delete doctor?')">
+                            Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

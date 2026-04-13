@@ -1,0 +1,68 @@
+﻿@model HealthcareApp.Web.ViewModel.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4 fw-bold text-primary">
+        🏥 Healthcare Dashboard
+    </h2>
+
+    <div class="row">
+
+        <!-- PATIENT CARD -->
+        <div class="col-md-4">
+            <div class="card shadow text-center p-4 dashboard-card bg-primary text-white">
+                <div class="mb-2">
+                    <i class="bi bi-people-fill" style="font-size:40px;"></i>
+                </div>
+                <h3>@Model.TotalPatients</h3>
+                <p>Total Patients</p>
+
+                <a href="/Patient" class="btn btn-light mt-2">View</a>
+            </div>
+        </div>
+
+        <!-- DOCTOR CARD -->
+        <div class="col-md-4">
+            <div class="card shadow text-center p-4 dashboard-card bg-success text-white">
+                <div class="mb-2">
+                    <i class="bi bi-person-badge-fill" style="font-size:40px;"></i>
+                </div>
+                <h3>@Model.TotalDoctors</h3>
+                <p>Total Doctors</p>
+
+                <a href="/Doctor" class="btn btn-light mt-2">View</a>
+            </div>
+        </div>
+
+        <!-- APPOINTMENT CARD -->
+        <div class="col-md-4">
+            <div class="card shadow text-center p-4 dashboard-card bg-warning text-dark">
+                <div class="mb-2">
+                    <i class="bi bi-calendar-check-fill" style="font-size:40px;"></i>
+                </div>
+                <h3>@Model.TotalAppointments</h3>
+                <p>Total Appointments</p>
+
+                <a href="/Appointment" class="btn btn-dark mt-2">View</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+    .dashboard-card {
+        border-radius: 15px;
+        transition: 0.3s;
+    }
+
+        .dashboard-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
+        }
+</style>

@@ -1,0 +1,68 @@
+﻿@model HealthcareApp.Web.ViewModels.AppointmentViewModel
+
+<h2>Book Appointment</h2>
+
+<form asp-action="Create" method="post">
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <!-- PATIENT DROPDOWN -->
+    <div class="mb-2">
+        <label>Patient</label>
+        <select asp-for="PatientId" asp-items="Model.Patients" class="form-control">
+            <option value="">Select Patient</option>
+        </select>
+    </div>
+
+    <!-- DOCTOR DROPDOWN -->
+    <div class="mb-2">
+        <label>Doctor</label>
+        <select asp-for="DoctorId" asp-items="Model.Doctors" class="form-control">
+            <option value="">Select Doctor</option>
+        </select>
+    </div>
+
+    <!-- DATE -->
+    <div class="mb-2">
+        <label>Date</label>
+        <input asp-for="Date"
+               type="date"
+               class="form-control"
+               min="@DateTime.Today.ToString("yyyy-MM-dd")" />
+
+            <span asp-validation-for="Date" class="text-danger"></span>
+    </div>
+
+    <!-- TIME SLOT -->
+    <div class="mb-3">
+        <label>Time Slot</label>
+
+        <select asp-for="TimeSlot" class="form-control">
+            <option value="">Select</option>
+            <option>9AM - 11AM</option>
+            <option>11AM - 1PM</option>
+            <option>2PM - 4PM</option>
+            <option>4PM - 6PM</option>
+        </select>
+
+        <span asp-validation-for="TimeSlot" class="text-danger"></span>
+    </div>
+
+    <!-- STATUS -->
+    <div class="mb-2">
+        <label>Status</label>
+        <select asp-for="Status" class="form-control">
+            <option value="Booked">Booked</option>
+            <option value="Cancelled">Cancelled</option>
+            <option value="Completed">Completed</option>
+        </select>
+    </div>
+
+    <button class="btn btn-success">Book</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

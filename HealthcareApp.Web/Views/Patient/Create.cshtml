@@ -1,0 +1,53 @@
+﻿@model HealthcareApp.BLL.DTOs.PatientDto
+
+<h2>Add Patient</h2>
+
+<form asp-action="Create" method="post">
+
+    <div class="mb-2">
+        <label>Name</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label>Age</label>
+        <input asp-for="Age" type="number" class="form-control" />
+        <span asp-validation-for="Age" class="text-danger"></span>
+    </div>
+
+    <div class="mb-2">
+        <label>Gender</label>
+        <select asp-for="Gender" class="form-control">
+            <option value="">Select</option>
+            <option>Male</option>
+            <option>Female</option>
+        </select>
+        <span asp-validation-for="Gender" class="text-danger"></span>
+    </div>
+
+    <div class="mb-2">
+        <label>Phone</label>
+        <input asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label>Email</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="mb-2">
+        <label>Medical Notes</label>
+        <textarea asp-for="MedicalNotes" class="form-control"></textarea>
+        <span asp-validation-for="MedicalNotes" class="text-danger"></span>
+    </div>
+
+    <button class="btn btn-success">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
